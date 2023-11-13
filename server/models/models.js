@@ -50,7 +50,6 @@ const TypeBrand = sequelize.define('type_brand', {
 })
 
 
-
 User.hasOne(Basket)
 Basket.belongsTo(User)
 
@@ -75,8 +74,8 @@ BasketDevice.belongsTo(Device)
 Device.hasMany(DeviceInfo, {as: 'info'});
 DeviceInfo.belongsTo(Device)
 
-Type.belongsTo(Brand, {through: TypeBrand})
-Brand.belongsTo(Type, {through: TypeBrand})
+Type.belongsToMany(Brand, {through: TypeBrand })
+Brand.belongsToMany(Type, {through: TypeBrand })
 
 module.exports = {
     User,
