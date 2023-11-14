@@ -17,12 +17,8 @@ app.use(express.static(path.resolve(__dirname, 'static')))
 app.use(fileUpload({}))
 app.use('/api', router)
 
-
-
-// Обработка ошибок, последний MiddleWare
+// Обработка ошибок, последний Middleware
 app.use(errorHandler)
-
-
 
 const start = async () => {
     try {
@@ -30,9 +26,9 @@ const start = async () => {
         await sequelize.sync()
         app.listen(PORT, () => console.log(`Server started on port ${PORT}`))
     } catch (e) {
-        console.error('Error occurred:', e.message);
-        console.error('Error stack:', e.stack);
+        console.log(e)
     }
 }
+
 
 start()
